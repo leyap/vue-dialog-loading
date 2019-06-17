@@ -1,16 +1,16 @@
 {
   "name": "vue-dialog-loading",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "A light vue dialog plugin with loading animation plugin",
   "private": false,
-  "main":"./dist/vueDialog.common.js",
+  "main": "./src/component",
   "keywords": [
     "vue",
     "dialog",
     "loading"
   ],
   "author": "lisper",
-  "license": "ISC",
+  "license": "MIT",
   "files": [
     "dist/*",
     "src/*",

@@ -1,29 +1,31 @@
-# vue-dialog-plugin
+# vue-dialog-loading
 
-## Project setup
-```
-npm install
-```
+## Install
+````
+npm install --save vue-dialog-loading
+````
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Quick Start
 
-### Compiles and minifies for production
-```
-npm run build
-```
+> main.js
+````
+import Dialog from 'vue-dialog-loading'
 
-### Run your tests
-```
-npm run test
-```
+Vue.use(Dialog)
+````
 
-### Lints and fixes files
-```
-npm run lint
-```
+> your vue file
+````
+this.$dialog({
+     content: 'some information',
+     okText: 'OK',
+     cancelText: 'Cancel',
+     onOk () {   //if is function, call while click
+     },
+     onCancel: true  //if is true, just show the button
+})
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+this.$loading.show({delay:0})   //delay 0ms, default is 300ms
+this.$loading.hide()
+````
+

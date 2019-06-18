@@ -2,6 +2,10 @@
 
 ### A light vue dialog plugin with loading animation
 
+View the [Demo](https://vue-dialog-loading.github.io/) 
+and its [source](https://github.com/leyap/vue-dialog-loading) for more.
+
+
 ![](https://media.giphy.com/media/ckrKKwKh444nS6HuWo/giphy.gif)
 
 ## Install

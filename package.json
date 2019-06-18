@@ -1,16 +1,17 @@
 {
   "name": "vue-dialog-loading",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A light vue dialog plugin with loading animation",
   "private": false,
   "main": "./src/component",
   "keywords": [
     "vue",
+    "vue-plugin",
     "dialog",
     "loading"
   ],
-  "author": "lisper <931816770@qq.com> (https://)",
-  "homepage": "https://github.com/leyap/vue-dialog-loading",
+  "author": "lisper <931816770@qq.com> (https://github.com/leyap)",
+  "homepage": "https://vue-dialog-loading.github.io",
   "repository": {
     "type": "git",
     "url": "https://github.com/leyap/vue-dialog-loading"

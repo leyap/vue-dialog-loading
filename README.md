@@ -1,5 +1,9 @@
 # vue-dialog-loading
 
+### A light vue dialog plugin with loading animation
+
+![](https://media.giphy.com/media/ckrKKwKh444nS6HuWo/giphy.gif)
+
 ## Install
 ````
 npm install --save vue-dialog-loading

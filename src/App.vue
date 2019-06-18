@@ -1,7 +1,8 @@
 <template>
     <div id="app">
-        <button @click="openDialog">Open Dialog</button>
-        <button @click="openBusyDialog">show loading</button>
+        <button @click="openDialog">Dialog</button>
+        <button @click="openDialog1">Dialog1</button>
+        <button @click="openBusyDialog">Loading</button>
     </div>
 </template>
 
@@ -11,11 +12,17 @@
         methods: {
             openDialog () {
                 this.$dialog({
+                    content: 'this is a dialog with OK button',
+                    onOk: true   //if is function, call while click
+                })
+            },
+            openDialog1 () {
+                this.$dialog({
                     content: 'dialog with ok button',
                     onOk () {   //if is function, call while click
                         window.alert('onOk callback')
                     },
-                    onCancel: true  //if is true, just show the button
+                    onCancel: true
                 })
             },
             openBusyDialog () {
@@ -38,6 +45,10 @@
         margin-top: 60px;
     }
 
+    * {
+        outline: none;
+    }
+
     button {
         height: 36px;
         background: #eee;
@@ -49,4 +60,5 @@
         font-size: 14px;
         cursor: pointer;
     }
+
 </style>

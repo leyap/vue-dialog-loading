@@ -3,12 +3,19 @@
         <button @click="openDialog">Dialog</button>
         <button @click="openDialog1">Dialog1</button>
         <button @click="openBusyDialog">Loading</button>
+        <img class="img" :src="imgUrl" @click="preview(imgUrl)"/>
     </div>
 </template>
 
 <script>
+    const imgUrl = require("@/assets/test.jpg")
     export default {
         name: 'app',
+        data () {
+            return {
+                imgUrl
+            }
+        },
         methods: {
             openDialog () {
                 this.$dialog({
@@ -30,6 +37,9 @@
                 setTimeout(() => {
                     this.$loading.hide()
                 }, 3000)
+            },
+            preview (imgUrl) {
+                this.$ImagePreview.show(imgUrl)
             }
         },
     }
@@ -43,6 +53,9 @@
         text-align: center;
         color: #2c3e50;
         margin-top: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     * {
@@ -61,4 +74,10 @@
         cursor: pointer;
     }
 
+    .img {
+        width: 100px;
+        height: 100px;
+        display: block;
+        cursor: pointer;
+    }
 </style>

@@ -1,13 +1,19 @@
-import Vue     from 'vue'
-import Dialog  from './Dialog'
-import Loading from './Loading'
+import Vue          from 'vue'
+import Dialog       from './Dialog'
+import Loading      from './Loading'
+import ImagePreview from './ImagePreview'
 
 const dialogConstructor = Vue.extend(Dialog)
 const loadingConstructor = Vue.extend(Loading)
+const ImagePreviewConstructor = Vue.extend(ImagePreview)
 
 const loadingInstance = new loadingConstructor()
 loadingInstance.vm = loadingInstance.$mount()
 document.body.appendChild(loadingInstance.$el)
+
+const imgPreviewInstance = new ImagePreviewConstructor()
+imgPreviewInstance.vm = imgPreviewInstance.$mount()
+document.body.appendChild(imgPreviewInstance.$el)
 
 let count = 1
 
@@ -47,9 +53,25 @@ const dialog = (params) => {
 }
 
 
+export {Dialog, Loading, ImagePreview}
+
+const install = function (Vue) {
+    Vue.prototype.$dialog = dialog
+    Vue.prototype.$loading = loadingInstance
+    Vue.prototype.$ImagePreview = imgPreviewInstance
+}
+
+/* istanbul ignore if */
+if (typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+}
+
+// console.log(Dialog)
+
 export default {
-    install: Vue => {
-        Vue.prototype.$dialog = dialog
-        Vue.prototype.$loading = loadingInstance
-    }
+    version: '0.1.11',
+    install,
+    Dialog,
+    Loading,
+    ImagePreview
 }

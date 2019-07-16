@@ -1,6 +1,8 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue    from 'vue'
+import App    from './App.vue'
 import Dialog from './component'
+// import Dialog from '../dist/index.umd'
+// import Dialog from 'vue-cropper'
 
 Vue.use(Dialog)
 

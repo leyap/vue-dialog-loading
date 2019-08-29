@@ -6,7 +6,7 @@
                 <div class="content"> {{content}}</div>
                 <div class="btnBox">
                     <button v-if="onOk" @click="handleOnOk">{{okText}}</button>
-                    <button v-if="onCancel" @click="handleOnCancel">{{cancelText}}</button>
+                    <button class="cancelBtn" v-if="onCancel" @click="handleOnCancel">{{cancelText}}</button>
                 </div>
             </div>
         </div>
@@ -88,13 +88,16 @@
     }
 
     .dialog {
-        width: 260px;
+        /*width: 260px;*/
+        max-width: 400px;
         background: #fff;
         border-radius: 10px;
         display: flex;
         flex-flow: column nowrap;
         align-items: stretch;
         box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
+        margin: 5px;
+        padding: 10px 15px;
     }
 
     .title, .btnBox {
@@ -119,12 +122,18 @@
         color: #fff;
     }
 
+    .btnBox button.cancelBtn {
+        color: #00a0ff;
+        background: #fff;
+        border: 1px solid #00a0ff;
+    }
+
     .content {
         flex-grow: 1;
         font-size: 16px;
         display: flex;
         justify-content: center;
-        padding: 10px;
+        padding: 15px;
     }
 
     .fade-enter-active, .fade-enter-active .dialog,

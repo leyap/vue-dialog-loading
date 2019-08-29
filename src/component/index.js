@@ -16,6 +16,7 @@ imgPreviewInstance.vm = imgPreviewInstance.$mount()
 document.body.appendChild(imgPreviewInstance.$el)
 
 let count = 1
+let options = {}
 
 const dialog = (params) => {
     let id = 'dialog-' + count++
@@ -23,7 +24,7 @@ const dialog = (params) => {
     // instance.id = id
     instance.vm = instance.$mount()
 
-    let {title, content, okText, cancelText, onOk, onCancel, bgClose} = params || {}
+    let {title, content, btns, bgClose} = params || {}
 
     instance.visible = true
     instance.bgClose = bgClose
@@ -35,17 +36,13 @@ const dialog = (params) => {
     if (typeof content == 'string') {
         instance.content = content
     }
-    if (typeof okText == 'string') {
-        instance.okText = okText
-    }
-    if (typeof cancelText == 'string') {
-        instance.cancelText = cancelText
-    }
-    if (onOk) {
-        instance.onOk = onOk
-    }
-    if (onCancel) {
-        instance.onCancel = onCancel
+    if (Array.isArray(btns)) {
+        instance.btns = btns.map(item => {
+            if (!item.color && options.dialogBtnColor) {
+                item.color = options.dialogBtnColor
+            }
+            return item
+        })
     }
 
     document.body.appendChild(instance.$el)
@@ -55,10 +52,13 @@ const dialog = (params) => {
 
 export {Dialog, Loading, ImagePreview}
 
-const install = function (Vue) {
+const install = function (Vue, _options) {
     Vue.prototype.$dialog = dialog
     Vue.prototype.$loading = loadingInstance
     Vue.prototype.$ImagePreview = imgPreviewInstance
+    if (_options) {
+        options = _options
+    }
 }
 
 /* istanbul ignore if */
@@ -66,10 +66,8 @@ if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue);
 }
 
-// console.log(Dialog)
-
 export default {
-    version: '0.1.14',
+    version: '0.2.1',
     install,
     Dialog,
     Loading,

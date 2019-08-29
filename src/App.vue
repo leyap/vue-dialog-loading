@@ -20,16 +20,47 @@
             openDialog () {
                 this.$dialog({
                     content: 'this is a dialog with OK button',
-                    onOk: true   //if is function, call while click
+                    // onOk: true   //if is function, call while click
+                    btns: [
+                        {
+                            label: 'Button1',
+                            color: '#f0f'
+                        },
+                        {
+                            label: 'Button2',
+                            callback: () => {
+                            },
+                            color: '#09f',
+                            ghost: true,
+                            keep: true
+                        },
+                        {
+                            label: 'Button3',
+                            callback: () => {
+                            },
+                            ghost: true,
+                            class: 'cancel'
+                        },
+                    ]
                 })
             },
             openDialog1 () {
                 this.$dialog({
                     content: 'dialog with ok button',
-                    onOk () {   //if is function, call while click
-                        window.alert('onOk callback')
-                    },
-                    onCancel: true
+                    btns: [
+                        {
+                            label: 'OK',
+                            color: '#09f',
+                        },
+                        {
+                            label: 'Cancel',
+                            color: '#444',
+                            ghost: true,
+                            callback: () => {
+                                window.alert('onOk callback')
+                            },
+                        },
+                    ],
                 })
             },
             openBusyDialog () {

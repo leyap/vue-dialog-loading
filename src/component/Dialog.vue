@@ -5,8 +5,10 @@
                 <h3 class="title">{{title}}</h3>
                 <div class="content"> {{content}}</div>
                 <div class="btnBox">
-                    <button v-if="onOk" @click="handleOnOk">{{okText}}</button>
-                    <button class="cancelBtn" v-if="onCancel" @click="handleOnCancel">{{cancelText}}</button>
+                    <button :class="(item.ghost?'ghost':'')+ (item.class?' '+item.class:'')" v-for="(item,index) in btns" :key="index"
+                            :style="{background:item.ghost ?'':item.color,color: item.ghost?item.color:'',borderColor: item.ghost?item.color:''}"
+                            @click="handleCallback(item)">{{item.label}}
+                    </button>
                 </div>
             </div>
         </div>
@@ -15,7 +17,7 @@
 
 <script>
     export default {
-        name: 'LDialog',
+        name: 'Dialog',
         data () {
             return {
                 id: '',
@@ -23,24 +25,21 @@
                 bgClose: false,
                 title: '',
                 content: '',
-                okText: 'OK',
-                cancelText: 'Cancel',
                 onOk: null,
                 onCancel: null,
+                btns: []
             }
         },
+        beforeUpdate () {
+        },
         methods: {
-            handleOnOk () {
-                if (typeof this.onOk === 'function') {
-                    this.onOk()
+            handleCallback (item) {
+                if (typeof item.callback === 'function') {
+                    item.callback()
                 }
-                this.close()
-            },
-            handleOnCancel () {
-                if (typeof this.onCancel === 'function') {
-                    this.onCancel()
+                if (!item.keep) {
+                    this.close()
                 }
-                this.close()
             },
             close () {
                 this.visible = false
@@ -118,14 +117,14 @@
         margin: 0 10px;
         font-size: 15px;
         border-radius: 5px;
-        background: #00a0ff;
+        background: #888;
         color: #fff;
     }
 
-    .btnBox button.cancelBtn {
-        color: #00a0ff;
+    .btnBox button.ghost {
+        color: #888;
         background: #fff;
-        border: 1px solid #00a0ff;
+        border: 1px solid #888;
     }
 
     .content {

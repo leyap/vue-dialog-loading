@@ -19,18 +19,29 @@ npm install --save vue-dialog-loading
 ````
 import Dialog from 'vue-dialog-loading'
 
-Vue.use(Dialog)
+Vue.use(Dialog, {
+ dialogBtnColor: '#0f0'
+})
+
 ````
 
 > your vue file
 ````
 this.$dialog({
+     title: 'title',
      content: 'some information',
-     okText: 'OK',
-     cancelText: 'Cancel',
-     onOk () {   //if is function, call while click
-     },
-     onCancel: true  //if is true, just show the button
+     btns: [{
+                    label: 'OK',
+                    color: '#09f',
+             },
+             {
+                    label: 'Cancel',
+                    color: '#444',
+                    ghost: true,
+                    callback: () => {
+                        window.alert('onOk callback')
+                    },
+             }],
 })
 
 this.$loading.show({delay:0})   //delay 0ms, default is 300ms

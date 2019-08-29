@@ -1,6 +1,6 @@
 {
   "name": "vue-dialog-loading",
-  "version": "0.1.14",
+  "version": "0.2.1",
   "description": "A light vue dialog plugin with loading animation",
   "private": false,
   "main": "./dist/index.js",
@@ -29,8 +29,7 @@
     "build-demo": "vue-cli-service build",
     "build-bundle-not-use": "vue-cli-service build --target lib --name index ./src/component/index.js",
     "lint": "vue-cli-service lint",
-    "build-lib": "webpack",
-    "publish": "webpack && npm publish"
+    "build-lib": "webpack"
   },
   "dependencies": {
     "core-js": "^2.6.5",

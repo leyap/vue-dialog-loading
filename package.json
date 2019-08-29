@@ -1,6 +1,6 @@
 {
   "name": "vue-dialog-loading",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "A light vue dialog plugin with loading animation",
   "private": false,
   "main": "./dist/index.js",

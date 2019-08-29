@@ -69,7 +69,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 // console.log(Dialog)
 
 export default {
-    version: '0.1.13',
+    version: '0.1.14',
     install,
     Dialog,
     Loading,

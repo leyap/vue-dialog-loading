@@ -159,14 +159,14 @@
         width: 34px;
         height: 34px;
         border-radius: 50%;
-        background: rgba(200, 200, 200, 0.7);
+        /*background: rgba(200, 200, 200, 0.7);*/
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .closeBtn > i {
-        background: #fff;
+        background: #888;
         position: absolute;
         margin: 0;
     }

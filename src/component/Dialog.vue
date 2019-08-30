@@ -87,7 +87,7 @@
     }
 
     .dialog {
-        /*width: 260px;*/
+        min-width: 260px;
         max-width: 400px;
         background: #fff;
         border-radius: 10px;

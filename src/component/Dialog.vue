@@ -83,7 +83,7 @@
         text-align: center;
         margin: 0;
         height: 46px;
-        line-height: 46px;
+        line-height: 1.3;
     }
 
     .dialog {

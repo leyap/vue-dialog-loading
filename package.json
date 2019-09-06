@@ -1,7 +1,7 @@
 {
   "name": "vue-dialog-loading",
-  "version": "0.2.2",
-  "description": "A light vue dialog plugin with loading animation",
+  "version": "0.2.4",
+  "description": "A light vue dialog plugin with loading animation and image preview",
   "private": false,
   "main": "./dist/index.js",
   "keywords": [
@@ -35,7 +35,6 @@
     "core-js": "^2.6.5",
     "style-loader": "^0.23.1",
     "vue": "^2.6.10",
-    "vue-cropper": "^0.4.9",
     "vue-loader": "^15.7.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.6"

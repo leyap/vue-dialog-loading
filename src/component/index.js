@@ -67,7 +67,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '0.2.2',
+    version: '0.2.4',
     install,
     Dialog,
     Loading,

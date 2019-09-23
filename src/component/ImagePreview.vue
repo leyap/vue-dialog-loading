@@ -1,7 +1,11 @@
 <template>
     <transition name="fadex">
         <div class="imgpreviewMask" v-show="isShow">
-            <div class="imgpreviewDialog" @touchstart.prevent.stop="ontouchstart" @touchmove.prevent.stop="ontouchmove" @touchend="ontouchend">
+            <div class="imgpreviewDialog"
+                 @touchstart.prevent.stop="ontouchstart" @mousedown.prevent.stop="ontouchstart"
+                 @touchmove.prevent.stop="ontouchmove" @mousemove.prevent.stop="ontouchmove"
+                 @touchend="ontouchend" @mouseup="ontouchend" @touchcancel="ontouchend" @mouseleave="ontouchend"
+                 @wheel.prevent="onwheelFunc">
                 <div class="imgBox" ref="imgBox">
                     <img :src="imgUrl" ref="img"/>
                 </div>
@@ -28,6 +32,10 @@
                 currenty: 0,
                 scaled: false,
                 startTime: null,
+                inTouch: false,
+                scale: 1,
+                offx: 0,
+                offy: 0
             }
         },
         methods: {
@@ -42,6 +50,7 @@
                 }
             },
             hide () {
+                this.scale = 1
                 this.$refs.img.style.transform = "scale(1)"
                 this.$refs.imgBox.style.transform = "translate(0,0)"
                 this.isShow = false
@@ -50,9 +59,12 @@
                 this.y = 0
             },
             ontouchstart (e) {
-                let touch = e.touches[0]
-                this.startx = this.currentx = touch.clientX
-                this.starty = this.currenty = touch.clientY
+                this.inTouch = true
+                let touch = e.touches ? e.touches[0] : null
+                let clientX = touch ? touch.clientX : e.clientX
+                let clientY = touch ? touch.clientY : e.clientY
+                this.startx = this.currentx = clientX
+                this.starty = this.currenty = clientY
                 let time = new Date()
                 let diffTime = time - this.startTime
                 if (diffTime < 300) {
@@ -64,8 +76,8 @@
                         this.$refs.imgBox.style.transform = "translate(0,0)"
                     } else {
                         this.scaled = true
-                        this.$refs.img.style.transform = 'scale(2)'
-                        // this.$refs.img.style.transition = "unset"
+                        this.scale = 2
+                        this.$refs.img.style.transform = 'scale(' + this.scale + ')'
                     }
                     return
                 } else {
@@ -74,25 +86,37 @@
                 this.$refs.imgBox.style.transition = "unset"
             },
             ontouchmove (e) {
-                if (!this.scaled) {
+                if (!this.inTouch) {
                     return
                 }
                 let img = this.$refs.imgBox
-                let touch = e.touches[0]
-                this.currentx = touch.clientX
-                this.currenty = touch.clientY
+                let touch = e.touches ? e.touches[0] : null
+                let clientX = touch ? touch.clientX : e.clientX
+                let clientY = touch ? touch.clientY : e.clientY
+                this.currentx = clientX
+                this.currenty = clientY
                 let dx = this.currentx - this.startx
                 let dy = this.currenty - this.starty
                 img.style.transform = `translate( ${this.x + dx}px, ${this.y + dy}px)`
             },
             ontouchend () {
-                if (!this.scaled) {
-                    // this.$refs.img.style.transition = "all 0.3s ease"
-                    return
-                }
+                this.inTouch = false
                 this.$refs.imgBox.style.transition = "all 0.3s ease"
                 this.x += this.currentx - this.startx
                 this.y += this.currenty - this.starty
+            },
+            onwheelFunc (e) {
+                this.scale -= e.deltaY / 100;
+                this.imageScale();
+            },
+            imageScale () {
+                if (this.scale < 0.1) {
+                    this.scale = 0.1;
+                }
+                if (this.scale > 100) {
+                    this.scale = 100;
+                }
+                this.$refs.img.style.transform = "translate(" + (this.offx) + "px," + (this.offy) + "px)" + "scale(" + this.scale + ") ";
             }
         },
     }

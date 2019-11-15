@@ -67,8 +67,8 @@
                 this.starty = this.currenty = clientY
                 let time = new Date()
                 let diffTime = time - this.startTime
-                if (diffTime < 300) {
-                    if (this.scaled) {
+                if (diffTime < 300) {       //double click
+                    if (this.scaled || this.x !== 0 || this.y !== 0) {
                         this.scaled = false
                         this.x = 0
                         this.y = 0
@@ -89,7 +89,6 @@
                 if (!this.inTouch) {
                     return
                 }
-                let img = this.$refs.imgBox
                 let touch = e.touches ? e.touches[0] : null
                 let clientX = touch ? touch.clientX : e.clientX
                 let clientY = touch ? touch.clientY : e.clientY
@@ -97,15 +96,18 @@
                 this.currenty = clientY
                 let dx = this.currentx - this.startx
                 let dy = this.currenty - this.starty
-                img.style.transform = `translate( ${this.x + dx}px, ${this.y + dy}px)`
+                this.$refs.imgBox.style.transform = `translate( ${this.x + dx}px, ${this.y + dy}px)`
             },
             ontouchend () {
-                this.inTouch = false
-                this.$refs.imgBox.style.transition = "all 0.3s ease"
-                this.x += this.currentx - this.startx
-                this.y += this.currenty - this.starty
+                if (this.inTouch) {
+                    this.inTouch = false
+                    this.$refs.imgBox.style.transition = "all 0.3s ease"
+                    this.x += this.currentx - this.startx
+                    this.y += this.currenty - this.starty
+                }
             },
             onwheelFunc (e) {
+                this.scaled = true
                 this.scale -= e.deltaY / 100;
                 this.imageScale();
             },

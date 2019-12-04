@@ -1,6 +1,6 @@
 <template>
     <transition name="fade">
-        <div class="busy-mask" v-show="isShow">
+        <div class="busy-mask" v-show="isShow" :style="{background}">
             <div class="busy-dialog">
                 <div v-for="i in 4" :key=i :style="{animationDelay: (i*250)+'ms'}"></div>
             </div>
@@ -15,6 +15,8 @@
             return {
                 isShow: false,
                 delay: 300,
+                defaultBackground: null,
+                background: null,
                 timer: null
             }
         },
@@ -23,10 +25,16 @@
                 let delay = this.delay
                 if (params) {
                     let theDelay = params.delay
+                    let background = params.background || this.defaultBackground
                     if (typeof theDelay === 'number' && theDelay >= 0 && theDelay <= 60000) {
                         delay = theDelay
                     } else {
                         console.log('delay set error')
+                    }
+                    if (typeof background === 'string') {
+                        this.background = background
+                    } else {
+                        console.log('error! background must be string.')
                     }
                 }
                 this.timer = setTimeout(() => {
@@ -51,7 +59,7 @@
         right: 0;
         top: 0;
         bottom: 0;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(0, 0, 0, 0.5);
         transition: all 1s ease-out;
         display: flex;
         justify-content: center;

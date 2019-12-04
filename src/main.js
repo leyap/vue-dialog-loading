@@ -5,7 +5,8 @@ import Dialog from './component'
 // import Dialog from 'vue-cropper'
 
 Vue.use(Dialog, {
-    dialogBtnColor: '#0a0'
+    dialogBtnColor: '#0a0',
+    background: 'rgba(0,0,0,0.5)'
 })
 
 Vue.config.productionTip = false

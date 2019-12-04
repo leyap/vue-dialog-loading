@@ -21,6 +21,7 @@
                 this.$dialog({
                     content: 'this is a dialog with OK button',
                     // onOk: true   //if is function, call while click
+                    // background: '#00f',
                     btns: [
                         {
                             label: 'Button1',
@@ -47,6 +48,7 @@
             openDialog1 () {
                 this.$dialog({
                     content: 'dialog with ok button',
+                    // background: '#00f',
                     btns: [
                         {
                             label: 'OK',
@@ -65,6 +67,7 @@
             },
             openBusyDialog () {
                 this.$loading.show({delay: 0})   //delay default is 300ms
+                // this.$loading.show({delay: 0, background: 'rgba(0,0,0,0.5)'})   //delay default is 300ms
                 setTimeout(() => {
                     this.$loading.hide()
                 }, 3000)

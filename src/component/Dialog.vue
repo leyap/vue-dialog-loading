@@ -1,6 +1,6 @@
 <template>
     <transition name="fade">
-        <div class="dialog-mask" v-show="this.visible" @click="handleBgClose" :id="id">
+        <div class="dialog-mask" v-show="this.visible" @click="handleBgClose" :id="id" :style="{background}">
             <div class="dialog">
                 <h3 class="title">{{title}}</h3>
                 <div class="content"> {{content}}</div>
@@ -27,6 +27,7 @@
                 content: '',
                 onOk: null,
                 onCancel: null,
+                background: null,
                 btns: []
             }
         },

@@ -24,7 +24,10 @@ const dialog = (params) => {
     // instance.id = id
     instance.vm = instance.$mount()
 
-    let {title, content, btns, bgClose} = params || {}
+    let {title, content, btns, bgClose, background} = params || {}
+    if (!background) {
+        background = options.background;
+    }
 
     instance.visible = true
     instance.bgClose = bgClose
@@ -35,6 +38,9 @@ const dialog = (params) => {
     }
     if (typeof content == 'string') {
         instance.content = content
+    }
+    if (typeof background === 'string') {
+        instance.background = background
     }
     if (Array.isArray(btns)) {
         instance.btns = btns.map(item => {
@@ -49,7 +55,6 @@ const dialog = (params) => {
     return instance.el
 }
 
-
 export {Dialog, Loading, ImagePreview}
 
 const install = function (Vue, _options) {
@@ -59,6 +64,9 @@ const install = function (Vue, _options) {
     if (_options) {
         options = _options
     }
+    if (typeof options.background === 'string') {
+        loadingInstance.defaultBackground = options.background
+    }
 }
 
 /* istanbul ignore if */
@@ -67,7 +75,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '0.3.2',
+    version: '0.4.0',
     install,
     Dialog,
     Loading,

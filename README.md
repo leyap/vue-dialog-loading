@@ -19,8 +19,10 @@ npm install --save vue-dialog-loading
 ````
 import Dialog from 'vue-dialog-loading'
 
+//global config
 Vue.use(Dialog, {
- dialogBtnColor: '#0f0'
+    dialogBtnColor: '#0f0',
+    background:'rgba(0, 0, 0, 0.5)'
 })
 
 ````
@@ -30,6 +32,7 @@ Vue.use(Dialog, {
 this.$dialog({
      title: 'title',
      content: 'some information',
+     // background:'rgba(0,0,0, 0.5)',
      btns: [{
                     label: 'OK',
                     color: '#09f',
@@ -44,7 +47,7 @@ this.$dialog({
              }],
 })
 
-this.$loading.show({delay:0})   //delay 0ms, default is 300ms
+this.$loading.show({delay:0, background: '#444'})   //delay 0ms, default is 300ms
 this.$loading.hide()
 
 //preview image, support double touch to scale 2.0 and touch drag

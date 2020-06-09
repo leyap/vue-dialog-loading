@@ -13,7 +13,8 @@
 <style scoped>
   .busy-dialog {
     width: 120px;
-    height: 120px;
+    /*height: 40px;*/
+    min-height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -10,6 +10,8 @@
 
 <script>
     import LoadingCom from "./component/LoadingCom";
+    // import {LoadingCom} from "./component";
+
     const imgUrl = require("@/assets/test.jpg")
     export default {
         name: 'app',

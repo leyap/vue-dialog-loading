@@ -62,6 +62,9 @@ const install = function (Vue, _options) {
     Vue.prototype.$dialog = dialog
     Vue.prototype.$loading = loadingInstance
     Vue.prototype.$ImagePreview = imgPreviewInstance
+
+    Vue.component(LoadingCom.name, LoadingCom)
+
     if (_options) {
         options = _options
     }
@@ -76,7 +79,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '0.4.4',
+    version: '0.4.6',
     install,
     Dialog,
     Loading,

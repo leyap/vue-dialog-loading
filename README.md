@@ -2,7 +2,7 @@
 
 ### A light vue dialog plugin with loading animation and image preview
 
-View the [Demo](https://vue-dialog-loading.github.io/) 
+View the [Demo](https://vue-dialog-loading.github.io/)
 and its [source](https://github.com/leyap/vue-dialog-loading) for more.
 
 
@@ -50,7 +50,11 @@ this.$dialog({
 this.$loading.show({delay:0, background: '#444'})   //delay 0ms, default is 300ms
 this.$loading.hide()
 
+import dialog from 'vue-dialog-loading'
+const LoadingCom = dialog.LoadingCom
+<div><LoadingCom/></div>
+
 //preview image, support double touch to scale 2.0 and touch drag
-this.$ImagePreview.show(imgUrl) 
+this.$ImagePreview.show(imgUrl)
 ````
 

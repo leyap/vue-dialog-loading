@@ -79,7 +79,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '0.4.6',
+    version: '0.4.7',
     install,
     Dialog,
     Loading,

@@ -4,13 +4,16 @@
         <button @click="openDialog1">Dialog1</button>
         <button @click="openBusyDialog">Loading</button>
         <img class="img" :src="imgUrl" @click="preview(imgUrl)"/>
+        <LoadingCom/>
     </div>
 </template>
 
 <script>
+    import LoadingCom from "./component/LoadingCom";
     const imgUrl = require("@/assets/test.jpg")
     export default {
         name: 'app',
+        components: {LoadingCom},
         data () {
             return {
                 imgUrl

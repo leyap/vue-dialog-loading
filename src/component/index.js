@@ -2,6 +2,7 @@ import Vue          from 'vue'
 import Dialog       from './Dialog'
 import Loading      from './Loading'
 import ImagePreview from './ImagePreview'
+import LoadingCom   from "./LoadingCom";
 
 const dialogConstructor = Vue.extend(Dialog)
 const loadingConstructor = Vue.extend(Loading)
@@ -75,9 +76,10 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '0.4.3',
+    version: '0.4.4',
     install,
     Dialog,
     Loading,
+    LoadingCom,
     ImagePreview
 }

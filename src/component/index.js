@@ -25,7 +25,7 @@ const dialog = (params) => {
     // instance.id = id
     instance.vm = instance.$mount()
 
-    let {title, content, btns, bgClose, background} = params || {}
+    let {title, content, btns, bgClose, background, delay} = params || {}
     if (!background) {
         background = options.background;
     }
@@ -52,8 +52,18 @@ const dialog = (params) => {
         })
     }
 
+    if (Number.isInteger(delay)) {
+        if (delay > 30000) {
+            delay = 30000
+        }
+        if (delay < 20) {
+            delay = 20
+        }
+        instance.delay = delay
+    }
+
     document.body.appendChild(instance.$el)
-    return instance.el
+    return instance.$el
 }
 
 export {Dialog, Loading, ImagePreview}
@@ -79,7 +89,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '0.4.7',
+    version: '0.5.0',
     install,
     Dialog,
     Loading,

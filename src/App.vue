@@ -3,6 +3,7 @@
         <button @click="openDialog">Dialog</button>
         <button @click="openDialog1">Dialog1</button>
         <button @click="openBusyDialog">Loading</button>
+        <button @click="openDelayDialog">DelayDialog</button>
         <img class="img" :src="imgUrl" @click="preview(imgUrl)"/>
         <LoadingCom/>
     </div>
@@ -67,6 +68,19 @@
                                 window.alert('onOk callback')
                             },
                         },
+                    ],
+                })
+            },
+            openDelayDialog () {
+                this.$dialog({
+                    content: 'dialog with delay 3s',
+                    // background: '#00f',
+                    delay: 3000,
+                    btns: [
+                        {
+                            label: 'OK',
+                            color: '#09f',
+                        }
                     ],
                 })
             },

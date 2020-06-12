@@ -28,6 +28,7 @@
                 onOk: null,
                 onCancel: null,
                 background: null,
+                delay: 0,
                 btns: []
             }
         },
@@ -46,22 +47,32 @@
                 this.visible = false
                 setTimeout(() => {
                     this.$destroy(true)
-                    this.$el.parentNode.removeChild(this.$el)
+                    if (this.$el.parentNode) {
+                        this.$el.parentNode.removeChild(this.$el)
+                    }
                 }, 330)
             },
-            handleBgClose (e) {
+            handleBgClose(e) {
                 if (this.visible && this.bgClose && !document.querySelector('.dialog').contains(e.target)) {
                     this.close()
                 }
             }
         },
-        created () {
+        created() {
         },
-        mounted () {
+        mounted() {
+
         },
-        beforeDestroy () {
+        updated() {
+            if (this.delay > 0) {
+                window.setTimeout(() => {
+                    this.close()
+                }, this.delay)
+            }
         },
-        destroyed () {
+        beforeDestroy() {
+        },
+        destroyed() {
         }
 
     }

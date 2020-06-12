@@ -33,6 +33,7 @@ this.$dialog({
      title: 'title',
      content: 'some information',
      // background:'rgba(0,0,0, 0.5)',
+     delay: 3000,   //options, close after 3s
      btns: [{
                     label: 'OK',
                     color: '#09f',

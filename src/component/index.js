@@ -18,6 +18,7 @@ document.body.appendChild(imgPreviewInstance.$el)
 
 let count = 1
 let options = {}
+let lastDialog = null;
 
 const dialog = (params) => {
     let id = 'dialog-' + count++
@@ -63,6 +64,10 @@ const dialog = (params) => {
     }
 
     document.body.appendChild(instance.$el)
+    if (lastDialog) {
+        lastDialog.close();
+    }
+    lastDialog = instance.$el
     return instance.$el
 }
 
@@ -89,7 +94,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '0.5.1',
+    version: '0.5.2',
     install,
     Dialog,
     Loading,

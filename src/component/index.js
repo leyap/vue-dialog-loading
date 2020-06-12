@@ -67,8 +67,8 @@ const dialog = (params) => {
     if (lastDialog) {
         lastDialog.close();
     }
-    lastDialog = instance.$el
-    return instance.$el
+    lastDialog = instance
+    return instance
 }
 
 export {Dialog, Loading, ImagePreview}
@@ -94,7 +94,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-    version: '0.5.2',
+    version: '0.5.3',
     install,
     Dialog,
     Loading,

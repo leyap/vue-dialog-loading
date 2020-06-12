@@ -83,6 +83,28 @@
                         }
                     ],
                 })
+              this.$dialog({
+                content: 'dialog with delay 3s',
+                // background: '#00f',
+                delay: 3000,
+                btns: [
+                  {
+                    label: 'OK',
+                    color: '#09f',
+                  }
+                ],
+              })
+              this.$dialog({
+                content: 'dialog with delay 3s',
+                // background: '#00f',
+                delay: 3000,
+                btns: [
+                  {
+                    label: 'OK',
+                    color: '#09f',
+                  }
+                ],
+              })
             },
             openBusyDialog () {
                 this.$loading.show({delay: 0})   //delay default is 300ms

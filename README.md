@@ -51,7 +51,7 @@ this.$dialog({
 this.$loading.show({delay:0, background: '#444'})   //delay 0ms, default is 300ms
 this.$loading.hide()
 
-## Components:
+//Loading Components:
 <LoadingCom/>
 
 //preview image, support double touch to scale 2.0 and touch drag
